@@ -5,5 +5,6 @@ namespace CrowdFundingApp.Models
     public class CrowdFundingDbContext : DbContext
     {
         public CrowdFundingDbContext(DbContextOptions<CrowdFundingDbContext> options) : base(options) { }
+        DbSet<User> Users { get; set; }
     }
 }
