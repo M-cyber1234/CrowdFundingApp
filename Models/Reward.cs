@@ -12,7 +12,7 @@ namespace CrowdFundingApp.Models
         public string Description { get; set; }
 
         [Required]
-        public decimal MinimumContribution { get; set; }
+        public double MinimumContribution { get; set; }
 
         [ForeignKey("Project")]
         public int ProjectId { get; set; }

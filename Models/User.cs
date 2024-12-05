@@ -21,8 +21,8 @@ namespace CrowdFundingApp.Models
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; }
 
-        public ICollection<Project> Projects { get; set; }
-        public ICollection<Contribution> Contributions { get; set; }
+        public List<Project> Projects { get; set; }
+        public List<Contribution> Contributions { get; set; }
 
     }
 }

@@ -12,7 +12,7 @@ namespace CrowdFundingApp.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public ICollection<Project> Projects { get; set; }
+        public List<Project> Projects { get; set; }
     }
 
 }

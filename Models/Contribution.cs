@@ -9,7 +9,7 @@ namespace CrowdFundingApp.Models
         public int ContributionId { get; set; }
 
         [Required]
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
 
         public DateTime ContributionDate { get; set; }
 

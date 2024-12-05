@@ -16,9 +16,9 @@ namespace CrowdFundingApp.Models
         public string Description { get; set; }
 
         [Required]
-        public decimal GoalAmount { get; set; }
+        public double GoalAmount { get; set; }
 
-        public decimal CurrentAmount { get; set; }
+        public double CurrentAmount { get; set; }
 
         public DateTime StartDate { get; set; }
 
@@ -34,8 +34,8 @@ namespace CrowdFundingApp.Models
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
-        public ICollection<Contribution> Contributions { get; set; }
-        public ICollection<Reward> Rewards { get; set; }
+        public List<Contribution> Contributions { get; set; }
+        public List<Reward> Rewards { get; set; }
     }
 
 }
