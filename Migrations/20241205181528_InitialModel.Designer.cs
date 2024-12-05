@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CrowdFundingApp.Migrations
 {
     [DbContext(typeof(CrowdFundingDbContext))]
-    [Migration("20241205180337_InitialModel")]
+    [Migration("20241205181528_InitialModel")]
     partial class InitialModel
     {
         /// <inheritdoc />
