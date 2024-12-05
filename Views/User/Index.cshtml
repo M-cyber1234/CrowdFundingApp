@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<User>
+
+@{
+    ViewData["Title"] = "List of users";
+}
+
+<h2>List of users</h2>
+
+<p>
+    <a href="@Url.Action("Create", "User")">Create a new user</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Date of creation</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.Email</td>
+                <td>@user.CreatedAt.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a href="@Url.Action("Details", "User", new { id = user.UserId })">Details</a> |
+                    <a href="@Url.Action("Edit", "User", new { id = user.UserId })">Modify</a> |
+                    <a href="@Url.Action("Delete", "User", new { id = user.UserId })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
