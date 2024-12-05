@@ -1,17 +1,18 @@
-﻿namespace CrowdFundingApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CrowdFundingApp.Models
 {
     public class Category
     {
+        [Key]
         public int CategoryId { get; set; }
+
+        [Required]
+        [StringLength(50)]
         public string Name { get; set; }
         public string Description { get; set; }
-        public Category() { }  
-        public Category(int categoryId, string name, string description)
-        {
-            CategoryId = categoryId;
-            Name = name;
-            Description = description;
-        }
+
+        public ICollection<Project> Projects { get; set; }
     }
 
 }

@@ -1,22 +1,28 @@
-﻿namespace CrowdFundingApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CrowdFundingApp.Models
 {
     public class User
     {
+        [Key]
         public int UserId { get; set; }
-        public string Name { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Username { get; set; }
+
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
-        public string Password { get; set; }
+
+        [Required]
+        public string PasswordHash { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; }
 
-        public User() { }
-        public User(int userId, string name, string email, string password, DateTime createdAt)
-        {
-            UserId = userId;
-            Name = name;
-            Email = email;
-            Password = password;
-            CreatedAt = createdAt;
-        }
+        public ICollection<Project> Projects { get; set; }
+        public ICollection<Contribution> Contributions { get; set; }
+
     }
 }

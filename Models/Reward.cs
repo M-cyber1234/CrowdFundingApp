@@ -3,23 +3,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CrowdFundingApp.Models
 {
-    public class Contribution
+    public class Reward
     {
         [Key]
-        public int ContributionId { get; set; }
+        public int RewardId { get; set; }
 
         [Required]
-        public decimal Amount { get; set; }
+        public string Description { get; set; }
 
-        public DateTime ContributionDate { get; set; }
-
-        [ForeignKey("User")]
-        public int UserId { get; set; }
-        public User User { get; set; }
+        [Required]
+        public decimal MinimumContribution { get; set; }
 
         [ForeignKey("Project")]
         public int ProjectId { get; set; }
         public Project Project { get; set; }
     }
-
 }
