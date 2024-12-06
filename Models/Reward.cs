@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+
 
 namespace CrowdFundingApp.Models
 {
@@ -17,5 +19,7 @@ namespace CrowdFundingApp.Models
         [ForeignKey("Project")]
         public int ProjectId { get; set; }
         public Project Project { get; set; }
+
+        public List<UserReward> UserRewards { get; set; }
     }
 }

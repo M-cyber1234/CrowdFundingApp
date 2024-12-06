@@ -11,6 +11,7 @@ namespace CrowdFundingApp.Models
         public DbSet<Contribution> Contributions { get; set; }
         public DbSet<Reward> Rewards { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<UserReward> UserRewards { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -25,6 +26,11 @@ namespace CrowdFundingApp.Models
                 .WithOne(c => c.User)
                 .HasForeignKey(c => c.UserId);
 
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.UserRewards)
+                .WithOne(ur => ur.User)
+                .HasForeignKey(ur => ur.UserId);
+
             modelBuilder.Entity<Project>()
                 .HasMany(p => p.Contributions)
                 .WithOne(c => c.Project)
@@ -34,6 +40,11 @@ namespace CrowdFundingApp.Models
                 .HasMany(p => p.Rewards)
                 .WithOne(r => r.Project)
                 .HasForeignKey(r => r.ProjectId);
+
+            modelBuilder.Entity<Reward>()
+                .HasMany(r => r.UserRewards)
+                .WithOne(ur => ur.Reward)
+                .HasForeignKey(ur => ur.RewardId);
 
             modelBuilder.Entity<Category>()
                 .HasMany(c => c.Projects)

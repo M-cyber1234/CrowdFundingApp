@@ -161,9 +161,6 @@ namespace CrowdFundingApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -172,6 +169,32 @@ namespace CrowdFundingApp.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("CrowdFundingApp.Models.UserReward", b =>
+                {
+                    b.Property<int>("UserRewardId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserRewardId"));
+
+                    b.Property<DateTime>("DateAwarded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RewardId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserRewardId");
+
+                    b.HasIndex("RewardId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRewards");
                 });
 
             modelBuilder.Entity("CrowdFundingApp.Models.Contribution", b =>
@@ -223,6 +246,25 @@ namespace CrowdFundingApp.Migrations
                     b.Navigation("Project");
                 });
 
+            modelBuilder.Entity("CrowdFundingApp.Models.UserReward", b =>
+                {
+                    b.HasOne("CrowdFundingApp.Models.Reward", "Reward")
+                        .WithMany("UserRewards")
+                        .HasForeignKey("RewardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CrowdFundingApp.Models.User", "User")
+                        .WithMany("UserRewards")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Reward");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("CrowdFundingApp.Models.Category", b =>
                 {
                     b.Navigation("Projects");
@@ -235,11 +277,18 @@ namespace CrowdFundingApp.Migrations
                     b.Navigation("Rewards");
                 });
 
+            modelBuilder.Entity("CrowdFundingApp.Models.Reward", b =>
+                {
+                    b.Navigation("UserRewards");
+                });
+
             modelBuilder.Entity("CrowdFundingApp.Models.User", b =>
                 {
                     b.Navigation("Contributions");
 
                     b.Navigation("Projects");
+
+                    b.Navigation("UserRewards");
                 });
 #pragma warning restore 612, 618
         }
