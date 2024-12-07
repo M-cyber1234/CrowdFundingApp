@@ -46,6 +46,17 @@ INSERT INTO Categories (Name, Description) VALUES
 ('Santé', 'Projets liés à la santé et au bien-être'),
 ('Environnement', 'Projets environnementaux et écologiques');
 
+INSERT INTO Contributions (Amount, ContributionDate, UserId, ProjectId) VALUES
+(50, '2023-04-05', 2, 7),
+(100, '2023-04-06', 3, 8),
+(20, '2023-04-07', 4, 9),
+(70, '2023-04-08', 2, 7),
+(200, '2023-05-01', 3, 9),
+(150, '2023-05-02', 4, 9),
+(300, '2023-05-03', 2, 8),
+(400, '2023-05-04', 3, 7),
+(50, '2023-05-05', 4, 9);
+
 
 SELECT * FROM Users;
 SELECT * FROM Categories;
@@ -53,3 +64,4 @@ SELECT * FROM Projects;
 SELECT * FROM Rewards;
 SELECT * FROM Contributions;
 SELECT * FROM UserRewards;
+SELECT * FROM Contributions;
