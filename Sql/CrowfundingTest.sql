@@ -39,6 +39,13 @@ INSERT INTO UserRewards (UserId, RewardId, DateAwarded) VALUES
 (4, 4, '2023-04-07'),
 (2, 6, '2023-04-08');
 
+INSERT INTO Categories (Name, Description) VALUES
+('Technologie', 'Projets liés à la technologie et à l''innovation'),
+('Art', 'Projets artistiques et créatifs'),
+('Éducation', 'Projets éducatifs et pédagogiques'),
+('Santé', 'Projets liés à la santé et au bien-être'),
+('Environnement', 'Projets environnementaux et écologiques');
+
 
 SELECT * FROM Users;
 SELECT * FROM Categories;
